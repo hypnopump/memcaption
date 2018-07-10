@@ -68,11 +68,11 @@ def logger():
 
 @app.route('/logout/')
 def logout():
-   # remove the username, id from the session if it is there
-   session.pop('username', None)
-   session.pop('id', None)
-   session.pop('email', None)
-   return redirect(url_for('web'))
+	# remove the username, id from the session if it is there
+	session.pop('username', None)
+	session.pop('id', None)
+	session.pop('email', None)
+	return redirect(url_for('web'))
 
 @app.route('/new_user/', methods = ['GET', 'POST'])
 def new_user():
@@ -89,15 +89,15 @@ def new_user():
 @app.route('/testing/')
 def testing():
 	sols = []
-    q = models.Reg.query.all()
-    for line in q:
-        if query in line.name.split(" "):
-            sols.append({"name": str(line.name),"link": str(line.hash)})
-    return sols
+	q = models.Reg.query.all()
+	for line in q:
+		if query in line.name.split(" "):
+			sols.append({"name": str(line.name),"link": str(line.hash)})
+	return sols
 
 if __name__ == '__main__':
 	# # Deploying
-    # port = int(os.environ.get("PORT", 5000))
-    # app.run(host='0.0.0.0', port=port)
-    # Debugging
-    app.run(debug=True, host='0.0.0.0')
+	# port = int(os.environ.get("PORT", 5000))
+	# app.run(host='0.0.0.0', port=port)
+	# Debugging
+	app.run(debug=True, host='0.0.0.0')
