@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- BODY -->
+    <section class="container" id="photos" style="margin-top:2rem; width:60%; margin-right: auto;">
+        <h3 class="title">Memes</h3>
+        <p></p>
+        
+        <div class="image" style="max-width:70%;">
+            <img src="/static/img/first.png" style="max-height:50%; border-radius:0.5rem;">
+
+            <p style="margin:0px;"><b>Source: </b><a href="https://pexels.com" title="source">Pexels</a></p>
+
+            <dl style="margin:0px">
+                <dt style="border: 1px solid #eee; margin:0px;">
+                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> 4</a>
+                    &nbsp;&nbsp;&nbsp; I'm not giving it to you...
+                </dt>
+                <dt style="border: 1px solid #eee; margin:0px;">
+                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> 2</a>
+                    &nbsp;&nbsp;&nbsp; You little innocent...
+                </dt>
+                <dt>
+                    <form method="POST">
+                        <input type="text" placeholder="Comment..." id="nameField" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
+                    </form>
+                </dt>
+            </dl>
+        </div>
+
+        <div class="image" style="max-width:70%;">
+            <img src="/static/img/second.png" style="max-height:50%; border-radius:0.5rem;">
+
+            <p style="margin:0px;"><b>Source: </b><a href="https://pexels.com" title="source">Pexels</a></p>
+
+            <dl>
+                <dt style="border: 1px solid #eee; margin:0px;">
+                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> 7</a>
+                    &nbsp;&nbsp;&nbsp; Going into the weekend like...
+                </dt>
+                <dt style="border: 1px solid #eee; margin:0px;">
+                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> 3</a>
+                    &nbsp;&nbsp;&nbsp; When someone steps into your room
+                </dt>
+                <dt>
+                    <form method="POST">
+                        <input type="text" placeholder="Comment..." id="nameField" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
+                    </form>
+                </dt>
+            </dl>
+        </div>
+        
+    </section>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Eric Alcaide">
+    <link rel="icon" href="../static/img/troll.png" type="image/png">
+
+    <title>MemCaption 🐣</title>
+
+    <!-- Milligrami Core CSS -->
+    <link href="../static/css/milligram.css" rel="stylesheet">
+    <link href='../static/css/main.css' rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+    <nav class="container">
+        <a class="button button-outline" href="/">🏠 Home</a>
+        <a class="button button-outline" href="/leaderboard/">🥇 Leaderboard</a>
+        <a class="button button-outline" href="/post9/">🎆 Last Post</a>
+        {% if session["username"] %}
+            <a class="button button-outline" href="/logout/">🚪 Log out</a>
+        {% else %}
+            <a class="button button-outline" href="/signup/">📩  Sign up</a>
+            <a class="button button-outline" href="/login/">🔑 Log in</a>
+        {% endif %}
+        
+    </nav>
+
+
+    <br/>
+    <!-- Clear any float. HEADER  -->
+    <div class="clearfix header container">
+        <h3 id="homeHeading ">MemCaption, type the funniest meme caption.</h3>
+    </div>	
+
+	<!-- BODY -->
+	{% block content %}
+	{% endblock %}
+
+    <!-- FOOTER -->
+    <section class="container" id="contact" style="margin-top:10rem;">
+        <h3 class="title">Contact</h3>
+        <p>Feel free to <a href="mailto:ericalcaide1@gmail.com.com">email</a> us to provide some feedback on our app, give us suggestions, or to just say hello!</p>
+        <p><b>Twitter:</b> <a href="https://twitter.com/eric_alcaide" title="twitter">@eric_alcaide</a></p>
+    </section>
+
+    <section class="container" id="contributing" style="margin-top:5rem;">
+        <h3 class="title">Contributing</h3>
+        <p>Want to contribute? Follow the<a href="https://github.com/EricAlcaide/memcaption" title="contributing"> recommendations</a> included in the <b>contribute</b> section.</p>
+    </section>
+
+    <footer class="footer" style="margin-top:5rem;">
+        <section class="container">
+            <p>Created with ♥ by <a href="https://ericalcaide.com" title="Eric Alcaide" target="_blank" >Eric Alcaide</a>. Licensed under the<a href="https://github.com/EricAlcaide/memcaption#license" title="Apache License" target="_blank"> Apache License</a>. Copyright &copy; 2018</p>
+        </section>
+    </footer>
+
+
+</body>
+
+</html>

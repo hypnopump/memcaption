@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container">
+    <form method="post" action="/new_user/" method="Post">
+    	{% if mess%}
+    		<p style="color:red;">{{mess}}</p>
+    	{% endif %}
+
+    	<label for="username">Username</label>
+        <input type="text" placeholder="Eric Alcaide" name="username">
+        <label for="email">Email</label>
+        <input type="email" placeholder="someone@example.com" name="email">
+        <label for="password">Password</label>
+        <input type="password" name="password">
+        <label for="re_password">Retype password</label>
+        <input type="password" name="re_password">
+        <input class="button-primary" type="submit" value="Send" name="send">
+    </form>
+</section>
+
+
+{% endblock %}

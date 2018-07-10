@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- BODY -->
+    <section class="container" id="photos" style="margin-top:2rem; width:60%; margin-right: auto;">
+        {% if data[0] %}
+            <h3 class="title">Memes</h3>
+        {% else %}
+            <h3 class="title">Sorry, no memes to display yet</h3>
+        <p></p>
+        {% endif %}
+
+        
+        {% for img in data %}
+        <div class="image" style="max-width:70%;">
+            <img src="/static/img/{{data[img]['name']}}" style="max-height:50%; border-radius:0.5rem;">
+
+            <p style="margin:0px;"><b>Source: </b><a href="data[img]['source_link']" title="source">{{data[img]['source']}}</a></p>
+
+            <dl style="margin:0px">
+
+                {% for comment in data[img]['comments'] %}
+                <dt style="border: 1px solid #eee; margin:0px;">
+                    <a class="button" href="/upvote/{{comment['id']}}/" title="upvote" style="margin:0px;"><big>&#x2764</big> 4</a>
+                    &nbsp;&nbsp;&nbsp; <b>{{comment['user']}}: </b>{{comment['text']}}
+                </dt>
+                {% endfor %}
+
+                <dt>
+                    <form method="POST">
+                        <input type="text" placeholder="Comment..." id="nameField" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
+                    </form>
+                </dt>
+            </dl>
+        </div>
+        {% endfor %}
+        
+    </section>
+
+{% endblock %}
