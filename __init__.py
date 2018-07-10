@@ -17,16 +17,16 @@ import hashlib
 
 
 app = Flask(__name__)
-app.config.from_pyfile('utils/config.py')
+# app.config.from_pyfile('utils/config.py')
 app.secret_key = "dafuq?lolasso"
 
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-from utils import models
-db.create_all()
+# db = SQLAlchemy(app)
+# migrate = Migrate(app, db)
+# from utils import models
+# db.create_all()
 
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# cors = CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/')
@@ -86,14 +86,14 @@ def new_user():
 
 	return "Data received "+username+" / "+email+" / "+password+" / "+re_password
 
-@app.route('/testing/')
-def testing():
-	sols = []
-	q = models.Reg.query.all()
-	for line in q:
-		if query in line.name.split(" "):
-			sols.append({"name": str(line.name),"link": str(line.hash)})
-	return sols
+# @app.route('/testing/')
+# def testing():
+# 	sols = []
+# 	q = models.Reg.query.all()
+# 	for line in q:
+# 		if query in line.name.split(" "):
+# 			sols.append({"name": str(line.name),"link": str(line.hash)})
+# 	return sols
 
 if __name__ == '__main__':
 	# # Deploying
