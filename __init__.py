@@ -58,13 +58,17 @@ def login():
 def logger():
 	email = request.form['email']
 	password = hashlib.sha256(bytearray(request.form['password'], "utf-8")).hexdigest()
-	if True: # if user_in_db:
-		# username = check_db_for_username
-		# user_id = check_db_for_id
-		session["username"] = "eric_alcaide" # username
+	# Check if user is registered in db
+	in_db = models.User.query.filter_by(email=email, password=password).first()
+	if in_db: # if user_in_db: update session values
+		username = in_db.username
+		user_id = in_db.username
+		session["username"] = username
 		session["email"] = email
-		session["id"] = 1 # user_id
-	return redirect(url_for('web'))
+		session["id"] = user_id
+		return redirect(url_for('web'))
+	else:
+		return render_template('login.html', mess="Email or password are incorrect")
 
 @app.route('/logout/')
 def logout():
@@ -83,8 +87,12 @@ def new_user():
 
 	if password != re_password:
 		return render_template('signup.html', mess="Passwords don't match")
-
-	return "Data received "+username+" / "+email+" / "+password+" / "+re_password
+	else:
+		# Add user to DB and redirect to login
+		user = models.User(username, email, password)
+    	db.session.add(user)
+    	db.session.commit()
+    	return render_template('login.html', mess="Signed up successfully")
 
 @app.route('/testing/')
 def testing():

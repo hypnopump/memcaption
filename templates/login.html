@@ -4,6 +4,10 @@
 
 <section class="container">
     <form method="post" action="/logger/">
+    	{% if mess%}
+    		<p style="color:red;">{{mess}}</p>
+    	{% endif %}
+    	
         <label for="email">Email</label>
         <input type="email" placeholder="someone@example.com" name="email">
         <label for="password">Password</label>
