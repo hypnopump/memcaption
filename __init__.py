@@ -90,9 +90,9 @@ def new_user():
 	else:
 		# Add user to DB and redirect to login
 		user = models.User(username, email, password)
-    	db.session.add(user)
-    	db.session.commit()
-    	return render_template('login.html', mess="Signed up successfully")
+		db.session.add(user)
+		db.session.commit()
+		return render_template('login.html', mess="Signed up successfully")
 
 @app.route('/testing/')
 def testing():
