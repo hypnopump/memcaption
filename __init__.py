@@ -96,7 +96,7 @@ def testing():
 					"name": str(line.username),
 					"email": str(line.email), 
 					"password": str(line.password)})
-	return sols
+	return str(sols)
 
 if __name__ == '__main__':
 	# # Deploying
