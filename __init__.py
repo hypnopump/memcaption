@@ -80,15 +80,20 @@ def logout():
 
 @app.route('/new_user/', methods = ['GET', 'POST'])
 def new_user():
+	# if not all fields complete, don't allow sign up
+	if request.form['username'] == "" or request.form['email'] == "" or request.form['password'] == "":
+		return render_template('signup.html', mess="Fill all the items please")
+
 	username = request.form['username']
 	email = request.form['email']
 	password = hashlib.sha256(bytearray(request.form['password'], "utf-8")).hexdigest()
 	re_password = hashlib.sha256(bytearray(request.form['re_password'], "utf-8")).hexdigest()
 
+	# Check if passwords don't ,atch
 	if password != re_password:
 		return render_template('signup.html', mess="Passwords don't match")
+	# If everything is correct, add user to DB and redirect to login
 	else:
-		# Add user to DB and redirect to login
 		user = models.User(username, email, password)
 		db.session.add(user)
 		db.session.commit()
