@@ -1,5 +1,5 @@
 from __init__ import db
-from utils.models import Reg
+from utils.models import User
 
 db.create_all()
 
