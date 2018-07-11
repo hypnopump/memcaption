@@ -10,19 +10,19 @@ from flask_cors import CORS, cross_origin
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask.ext.session import Session
+from flask_session import Session
 import os
 import json
 import hashlib
 
 
 app = Flask(__name__)
-# app.config.from_pyfile('utils/config.py')
+app.config.from_pyfile('utils/config.py')
 app.secret_key = "dafuq?lolasso"
 
-# db = SQLAlchemy(app)
-# migrate = Migrate(app, db)
-# from utils import models
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+from utils import models
 # db.create_all()
 
 # cors = CORS(app)
@@ -86,14 +86,17 @@ def new_user():
 
 	return "Data received "+username+" / "+email+" / "+password+" / "+re_password
 
-# @app.route('/testing/')
-# def testing():
-# 	sols = []
-# 	q = models.Reg.query.all()
-# 	for line in q:
-# 		if query in line.name.split(" "):
-# 			sols.append({"name": str(line.name),"link": str(line.hash)})
-# 	return sols
+@app.route('/testing/')
+def testing():
+	sols = []
+	q = models.User.query.all()
+	db.session.commit()
+	for line in q:
+		sols.append({"id": str(line.id),
+					"name": str(line.username),
+					"email": str(line.email), 
+					"password": str(line.password)})
+	return sols
 
 if __name__ == '__main__':
 	# # Deploying

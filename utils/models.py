@@ -1,10 +1,12 @@
 from __init__ import app, db
 
-class Reg(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(150))
-    hash = db.Column(db.String(75))
+    username = db.Column(db.String(150))
+    email = db.Column(db.String(150))
+    password = db.Column(db.String(150))
 
-    def __init__(self, name, hash):
-        self.name = name
-        self.hash = hash
+    def __init__(self, username, email, password):
+        self.username = username
+        self.email = email
+        self.password = password

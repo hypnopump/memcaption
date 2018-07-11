@@ -22,3 +22,6 @@ def linker(data):
 
 print(linker(first))
 print(linker(second))
+
+
+print(str(first))
