@@ -59,8 +59,8 @@ def add_comment():
 	db.session.commit()
 	return redirect('/post'+img_id+'/')
 
-@app.route('/voter<id>/')
-def upvote(id):
+@app.route('/<img_id>upvote<id>/')
+def upvote(img_id, id):
 	#Check if session is active
 	if session.get("username"):
 		comment = models.Comment.query.filter_by(id=id).first()
@@ -69,7 +69,7 @@ def upvote(id):
 			comment.voters += session["username"]+" "
 			db.session.commit()
 
-		return redirect('/post'+id+'/')
+		return redirect('/post'+img_id+'/')
 	# Don't allow voting if not logged in
 	else:
 		return redirect(url_for("login"))

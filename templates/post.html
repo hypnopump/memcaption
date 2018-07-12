@@ -12,7 +12,7 @@
             <dl>
                 {% for comment in comments %}
                 <dt style="border: 1px solid #eee; margin:0px;">
-                    <a class="button" href="/voter{{comment.id}}/" title="upvote" style="margin:0px;"><big>&#x2764</big> {{comment.score}}</a>
+                    <a class="button" href="/{{image.id}}upvote{{comment.id}}/" title="upvote" style="margin:0px;"><big>&#x2764</big> {{comment.score}}</a>
                     &nbsp;&nbsp;&nbsp; <b>{{comment.username}}: </b> &nbsp; {{comment.text}}
                 </dt>
                 {% endfor %}
