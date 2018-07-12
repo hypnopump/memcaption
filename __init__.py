@@ -125,7 +125,7 @@ def new_user():
 	# Check if username/email is already in db
 	name_in_db = models.User.query.filter_by(username=username).first()
 	email_in_db = models.User.query.filter_by(email=email).first()
-	if name_in_db or email: # if user_in_db: update session values
+	if name_in_db or email_in_db: # if user_in_db: update session values
 		return render_template('signup.html', mess="Email or username are already registered")
 	# Check if passwords don't match
 	elif password != re_password:
