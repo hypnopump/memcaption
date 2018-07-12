@@ -9,8 +9,8 @@ db.session.add(User("Geroge Orwell", "kytorch@gmail.com", "0A0D1178725D8C1461337
 db.session.add(Comment("eric_alcaide", "me in the mornin'", 1, 0))
 db.session.add(Comment("George Orwell", "when you expect A+ but get C", 1, 0))
 
-db.session.add(Comment("first.png", "Pexels", "pexels.com", 0))
-db.session.add(Comment("second.png", "Pexels", "pexels.com", 0))
+db.session.add(Img("first.png", "Pexels", "pexels.com"))
+db.session.add(Img("second.png", "Pexels", "pexels.com"))
 
 db.session.commit()
 
