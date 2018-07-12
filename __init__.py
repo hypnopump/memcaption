@@ -64,7 +64,7 @@ def upvote(id):
 	#Check if session is active
 	if session.get("username"):
 		comment = models.Comment.query.filter_by(id=id).first()
-		if session["username"] not in comment.voters.split(""):
+		if session["username"] not in comment.voters.split(" "):
 			comment.score += 1
 			comment.voters += session["username"]+" "
 			db.session.commit()
