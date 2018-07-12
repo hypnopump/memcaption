@@ -4,7 +4,7 @@
 	<!-- BODY -->
     <section class="container" id="photos" style="margin-top:2rem; margin-right: auto;"> <!--  width:60%; -->
 	
-		<div class="image" style="max-width:35rem;"">
+		<div class="image" style="max-width:100rem;"">
             <img src="/static/img/{{image.name}}" style="max-height:50%; border-radius:0.5rem;">
 
             <p style="margin:0px;"><b>Source: </b><a href="https://{{image.source_link}}" title="source">{{image.source_name}}</a></p>
@@ -21,7 +21,7 @@
                     <dt>
                         <form method="POST" action="/add_comment/">
                             <input type="hidden" name="img_id" value="{{image.id}}">
-                            <input type="text" placeholder="Comment..." name="text" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%; border-radius:0px;">
+                            <input type="text" placeholder="Comment..." name="text" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%; border-radius:0.5rem;">
                         </form>
                     </dt>
                 {% else %}
