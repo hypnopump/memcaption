@@ -3,8 +3,8 @@
 {% block content %}
 
     <!-- BODY -->
-    <section class="container" id="photos" style="margin-top:2rem; width:60%; margin-right: auto;">
-        {% if data[0] %}
+    <section class="container" id="photos" style="margin-top:2rem; margin-right: auto;"> <!--  width:60%; -->
+        {% if imgs[0] %}
             <h3 class="title">Memes</h3>
         {% else %}
             <h3 class="title">Sorry, no memes to display yet</h3>
@@ -19,7 +19,7 @@
             </div>
         {% endfor %}
         
-        {% for img in data %}
+        <!-- {% for img in data %}
         <div class="image" style="max-width:70%;">
             <img src="/static/img/{{data[img]['name']}}" style="max-height:50%; border-radius:0.5rem;">
 
@@ -41,6 +41,7 @@
                 </dt>
             </dl>
         </div>
+    -->
         {% endfor %}
         
     </section>
