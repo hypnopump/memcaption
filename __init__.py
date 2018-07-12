@@ -62,7 +62,7 @@ def add_comment():
 @app.route('/voter<id>/')
 def upvote(id):
 	#Check if session is active
-	if session["username"]:
+	if session.get("username"):
 		comment = models.Comment.query.filter_by(id=id).first()
 		if session["username"] not in comment.voters.split(""):
 			comment.score += 1
@@ -105,9 +105,10 @@ def logger():
 @app.route('/logout/')
 def logout():
 	# remove the username, id from the session if it is there
-	session.pop('username', None)
-	session.pop('id', None)
-	session.pop('email', None)
+	if session.get("username")
+		session.pop('username', None)
+		session.pop('id', None)
+		session.pop('email', None)
 	return redirect(url_for('web'))
 
 @app.route('/new_user/', methods = ['GET', 'POST'])
