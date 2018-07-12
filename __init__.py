@@ -69,14 +69,10 @@ def upvote(id):
 			comment.voters += session["username"]+" "
 			db.session.commit()
 
-		image = models.Img.query.filter_by(id=id).first()
-		# retrieve comments and sort by popularity
-		comments = models.Comment.query.filter_by(img_id=id)
-		comments = [x for x in sorted(comments, key=lambda x: x.score, reverse=True)]
-		return render_template('post.html', image=image, comments=comments)
+		return redirect('/post'+id+'/')
 	# Don't allow voting if not logged in
 	else:
-		redirect(url_for("login"))
+		return redirect(url_for("login"))
 
 @app.route('/leaderboard/')
 def leader():
