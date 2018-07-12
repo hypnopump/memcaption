@@ -42,7 +42,7 @@ def demo():
 def post(id):
 	image = models.Img.query.filter_by(id=id).first()
 	# retrieve comments and sort by popularity
-	comments = models.Img.query.filter_by(img_id=id)
+	comments = models.Comment.query.filter_by(img_id=id)
 	comments = [x for x in sorted(comments, key=lambda x: x.score, reverse=True)]
 	return render_template('post.html', image=image, comments=comments)
 
