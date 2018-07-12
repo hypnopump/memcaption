@@ -57,7 +57,7 @@ def add_comment():
 	comment = models.Comment(username, text, img_id, score, voters)
 	db.session.add(comment)
 	db.session.commit()
-	return post(img_id)
+	return redirect('/post'+img_id+'/')
 
 @app.route('/voter<id>/')
 def upvote(id):
@@ -69,7 +69,11 @@ def upvote(id):
 			comment.voters += session["username"]+" "
 			db.session.commit()
 
-		return post(id)
+		image = models.Img.query.filter_by(id=id).first()
+		# retrieve comments and sort by popularity
+		comments = models.Comment.query.filter_by(img_id=id)
+		comments = [x for x in sorted(comments, key=lambda x: x.score, reverse=True)]
+		return render_template('post.html', image=image, comments=comments)
 	# Don't allow voting if not logged in
 	else:
 		redirect(url_for("login"))
