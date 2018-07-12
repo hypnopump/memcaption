@@ -12,13 +12,14 @@
             <dl>
                 {% for comment in comments %}
                 <dt style="border: 1px solid #eee; margin:0px;">
-                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> {{comment.score}}</a>
+                    <a class="button" href="/voter{{comment.id}}/" title="upvote" style="margin:0px;"><big>&#x2764</big> {{comment.score}}</a>
                     &nbsp;&nbsp;&nbsp; <b>{{comment.username}}: </b> &nbsp; {{comment.text}}
                 </dt>
                 {% endfor %}
                 <dt>
-                    <form method="POST">
-                        <input type="text" placeholder="Comment..." id="nameField" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
+                    <form method="POST" action="/add_comment/">
+                        <input type="hidden" name="img_id" value="image.id">
+                        <input type="text" placeholder="Comment..." name="text" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
                     </form>
                 </dt>
             </dl>

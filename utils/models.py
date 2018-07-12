@@ -17,12 +17,14 @@ class Comment(db.Model):
     text = db.Column(db.Text)
     img_id = db.Column(db.Integer)
     score = db.Column(db.Integer)
+    voters = db.Column(db.Text)
 
     def __init__(self, username, text, img_id, score):
         self.username = username
         self.text = text
         self.img_id = img_id
         self.score = score
+        self.voters = voters
 
 class Img(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

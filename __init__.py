@@ -52,11 +52,26 @@ def add_comment():
 	text = request.form['text']
 	img_id = request.form['img_id']
 	score = 0
+	voters = ""
 
-	comment = models.Comment(username, text, img_id, score)
+	comment = models.Comment(username, text, img_id, score, voters)
 	db.session.add(comment)
 	db.session.commit()
 	redirect('/post'+img_id+'/')
+
+@app.route('/voter<id>/')
+def upvote(id):
+	# Don't allow voting if not logged in
+	if not session["username"]:
+		redirect(url_for("login"))
+
+	comment = models.Comment.query.filter_by(id=id).first()
+	if session["username"] not in comment.voters.split(""):
+		comment.score += 1
+		comment.voters += session["username"]+" "
+		db.session.commit()
+		
+	return redirect('/post'+id+'/')
 
 @app.route('/leaderboard/')
 def leader():
