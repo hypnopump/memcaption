@@ -31,6 +31,7 @@ from utils import models
 
 @app.route('/')
 def web():
+	# imgs = models.Img.query.all()
 	data = []
 	return render_template('index.html', data=data)
 
@@ -76,7 +77,18 @@ def upvote(img_id, id):
 
 @app.route('/leaderboard/')
 def leader():
-	return render_template('leader.html')
+	data = []
+	users = models.User.query.all()
+	comments = models.Comment.query.all()
+	for user in users:
+		score = 0
+		for comment in comments:
+			if user.username == comment.username:
+				score += comment.score
+		data.append({"username": user.username, "score":score})
+	data = [x for x in sorted(data, key=lambda x: x["score"], reverse=True)]
+
+	return render_template('leader.html', data=data)
 
 @app.route('/signup/')
 def signup():
@@ -157,7 +169,8 @@ def testing():
 					"name": str(line.username),
 					"text": str(line.text), 
 					"img_id": str(line.img_id),
-					"score": str(line.score)})
+					"score": str(line.score),
+					"voters": str(line.voters)})
 	# Check images working correctly 
 	imgs = []
 	q = models.Img.query.all()
