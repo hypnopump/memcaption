@@ -105,7 +105,7 @@ def logger():
 @app.route('/logout/')
 def logout():
 	# remove the username, id from the session if it is there
-	if session.get("username")
+	if session.get("username"):
 		session.pop('username', None)
 		session.pop('id', None)
 		session.pop('email', None)
