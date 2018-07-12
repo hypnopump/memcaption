@@ -4,7 +4,7 @@
 	<!-- BODY -->
     <section class="container" id="photos" style="margin-top:2rem; margin-right: auto;"> <!--  width:60%; -->
 	
-		<div class="image" style="style="max-width:50rem;"">
+		<div class="image" style="max-width:35rem;"">
             <img src="/static/img/{{image.name}}" style="max-height:50%; border-radius:0.5rem;">
 
             <p style="margin:0px;"><b>Source: </b><a href="https://{{image.source_link}}" title="source">{{image.source_name}}</a></p>
@@ -16,12 +16,20 @@
                     &nbsp;&nbsp;&nbsp; <b>{{comment.username}}: </b> &nbsp; {{comment.text}}
                 </dt>
                 {% endfor %}
-                <dt>
-                    <form method="POST" action="/add_comment/">
-                        <input type="hidden" name="img_id" value="{{image.id}}">
-                        <input type="text" placeholder="Comment..." name="text" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
-                    </form>
-                </dt>
+                <!-- Only show comment box if user logged in -->
+                {% if session["username"] %}
+                    <dt>
+                        <form method="POST" action="/add_comment/">
+                            <input type="hidden" name="img_id" value="{{image.id}}">
+                            <input type="text" placeholder="Comment..." name="text" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%; border-radius:0px;">
+                        </form>
+                    </dt>
+                {% else %}
+                    <dt>
+                        <a href="/signup/" class="button button-outline">Sign Up to type a comment</a>
+                        <a href="/login/" class="buttonbutton-outline">Login</a>
+                    </dt>
+                {% endif %}
             </dl>
         </div>
     </section>
