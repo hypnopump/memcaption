@@ -40,7 +40,11 @@ def demo():
 
 @app.route('/post<id>/')
 def post(id):
-	return render_template('post.html')
+	image = models.Img.query.filter_by(id=id).first()
+	# retrieve comments and sort by popularity
+	comments = models.Img.query.filter_by(img_id=id)
+	comments = [x for x in sorted(comments, key=lambda x: x.score, reverse=True)]
+	return render_template('post.html', image=image, comments=comments)
 
 @app.route('/add_comment/', methods=['POST'])
 def add_comment():
@@ -137,8 +141,7 @@ def testing():
 					"text": str(line.text), 
 					"img_id": str(line.img_id),
 					"score": str(line.score)})
-
-	# Check comments working correctly 
+	# Check images working correctly 
 	imgs = []
 	q = models.Img.query.all()
 	db.session.commit()

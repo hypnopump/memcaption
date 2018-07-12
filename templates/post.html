@@ -5,19 +5,17 @@
     <section class="container" id="photos" style="margin-top:2rem; width:60%; margin-right: auto;">
 	
 		<div class="image" style="max-width:70%;">
-            <img src="/static/img/second.png" style="max-height:50%; border-radius:0.5rem;">
+            <img src="/static/img/{{image.name}}" style="max-height:50%; border-radius:0.5rem;">
 
-            <p style="margin:0px;"><b>Source: </b><a href="https://pexels.com" title="source">Pexels</a></p>
+            <p style="margin:0px;"><b>Source: </b><a href="https://{{image.source_link}}" title="source">{{image.source_name}}</a></p>
 
             <dl>
+                {% for comment in comments %}
                 <dt style="border: 1px solid #eee; margin:0px;">
-                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> 7</a>
-                    &nbsp;&nbsp;&nbsp; Going into the weekend like...
+                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> {{comment.score}}</a>
+                    &nbsp;&nbsp;&nbsp; <b>{{comment.username}}: </b> &nbsp; {{comment.text}}
                 </dt>
-                <dt style="border: 1px solid #eee; margin:0px;">
-                    <a class="button" href="" title="upvote" style="margin:0px;"><big>&#x2764</big> 3</a>
-                    &nbsp;&nbsp;&nbsp; When someone steps into your room
-                </dt>
+                {% endfor %}
                 <dt>
                     <form method="POST">
                         <input type="text" placeholder="Comment..." id="nameField" style="margin:0px; width:70%"><input class="button-primary" type="submit" value="Send" style="margin:0px; width:30%">
