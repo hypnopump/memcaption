@@ -45,6 +45,7 @@ def post(id):
 	# retrieve comments and sort by popularity
 	comments = models.Comment.query.filter_by(img_id=id)
 	comments = [x for x in sorted(comments, key=lambda x: x.score, reverse=True)]
+
 	return render_template('post.html', image=image, comments=comments)
 
 @app.route('/add_comment/', methods=['POST'])
@@ -87,7 +88,8 @@ def leader():
 				score += comment.score
 		data.append({"username": user.username, "score":score})
 	data = [x for x in sorted(data, key=lambda x: x["score"], reverse=True)]
-
+	for i in range(len(data)):
+			data[i]["pos"] = i+1
 	return render_template('leader.html', data=data)
 
 @app.route('/signup/')

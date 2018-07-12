@@ -21,13 +21,13 @@
                 {% for i,user in enumerate(data) %}
                     {% if i == 0 %}
                         <tr style="background-color:#FFEA50;">
-                            <td style="padding-left:2em;">{{i}}</td>
+                            <td style="padding-left:2em;">{{user["pos"]}}</td>
                             <td>{{user["username"]}}</td>
                             <td style="color:#9b4dca; font-weight:bold;"><big>&#x2764</big> {{user["score"]}}  </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td style="padding-left:2em;">{{i}}</td>
+                            <td style="padding-left:2em;">{{user["pos"]}}</td>
                             <td>{{user["username"]}}</td>
                             <td style="color:#9b4dca; font-weight:bold;"><big>&#x2764</big> {{user["score"]}}  </td>
                         </tr>
