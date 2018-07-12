@@ -61,17 +61,18 @@ def add_comment():
 
 @app.route('/voter<id>/')
 def upvote(id):
-	# Don't allow voting if not logged in
-	if not session["username"]:
-		redirect(url_for("login"))
+	#Check if session is active
+	if session["username"]:
+		comment = models.Comment.query.filter_by(id=id).first()
+		if session["username"] not in comment.voters.split(""):
+			comment.score += 1
+			comment.voters += session["username"]+" "
+			db.session.commit()
 
-	comment = models.Comment.query.filter_by(id=id).first()
-	if session["username"] not in comment.voters.split(""):
-		comment.score += 1
-		comment.voters += session["username"]+" "
-		db.session.commit()
-		
-	return redirect('/post'+id+'/')
+		return redirect('/post'+id+'/')
+	# Don't allow voting if not logged in
+	else:
+		redirect(url_for("login"))
 
 @app.route('/leaderboard/')
 def leader():
