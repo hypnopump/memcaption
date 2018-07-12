@@ -19,7 +19,7 @@ class Comment(db.Model):
     score = db.Column(db.Integer)
     voters = db.Column(db.Text)
 
-    def __init__(self, username, text, img_id, score):
+    def __init__(self, username, text, img_id, score, voters):
         self.username = username
         self.text = text
         self.img_id = img_id
