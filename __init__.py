@@ -144,7 +144,7 @@ def testing():
 	db.session.commit()
 	for line in q:
 		imgs.append({"id": str(line.id),
-					"name": str(line.username),
+					"name": str(line.name),
 					"source_name": str(line.text), 
 					"source_link": "https://"+str(line.img_id)})
 	return str(sols)+"\n \n"+str(comms)+"\n \n"+str(imgs)
