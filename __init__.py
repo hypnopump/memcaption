@@ -69,6 +69,7 @@ def upvote(img_id, id):
 		if session["username"] not in comment.voters.split(" "):
 			comment.score += 1
 			comment.voters += session["username"]+" "
+			db.session.merge(comment)
 			db.session.commit()
 
 		return redirect('/post'+img_id+'/')
