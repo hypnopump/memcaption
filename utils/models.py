@@ -23,3 +23,14 @@ class Comment(db.Model):
         self.text = text
         self.img_id = img_id
         self.score = score
+
+class Img(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(42))
+    source_name = db.Column(db.String(42*2))
+    source_link = db.Column(db.String(42*2))
+
+    def __init__(self, name, source_name, source_link):
+        self.name = name
+        self.source_name = source_name
+        self.source_link = source_link
