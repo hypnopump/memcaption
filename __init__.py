@@ -42,6 +42,18 @@ def demo():
 def post(id):
 	return render_template('post.html')
 
+@app.route('/add_comment/', methods=['POST'])
+def add_comment():
+	username = session["username"]
+	text = request.form['text']
+	img_id = request.form['img_id']
+	score = 0
+
+	comment = models.Comment(username, text, img_id, score)
+	db.session.add(comment)
+	db.session.commit()
+	redirect('/post'+img_id+'/')
+
 @app.route('/leaderboard/')
 def leader():
 	return render_template('leader.html')
@@ -62,7 +74,7 @@ def logger():
 	in_db = models.User.query.filter_by(email=email, password=password).first()
 	if in_db: # if user_in_db: update session values
 		username = in_db.username
-		user_id = in_db.username
+		user_id = in_db.id
 		session["username"] = username
 		session["email"] = email
 		session["id"] = user_id
@@ -89,8 +101,13 @@ def new_user():
 	password = hashlib.sha256(bytearray(request.form['password'], "utf-8")).hexdigest()
 	re_password = hashlib.sha256(bytearray(request.form['re_password'], "utf-8")).hexdigest()
 
-	# Check if passwords don't ,atch
-	if password != re_password:
+	# Check if username/email is already in db
+	name_in_db = models.User.query.filter_by(username=username).first()
+	email_in_db = models.User.query.filter_by(email=email).first()
+	if name_in_db or email: # if user_in_db: update session values
+		return render_template('signup.html', mess="Email or username are already registered")
+	# Check if passwords don't match
+	elif password != re_password:
 		return render_template('signup.html', mess="Passwords don't match")
 	# If everything is correct, add user to DB and redirect to login
 	else:
@@ -101,6 +118,7 @@ def new_user():
 
 @app.route('/testing/')
 def testing():
+	# Check users working correctly
 	sols = []
 	q = models.User.query.all()
 	db.session.commit()
@@ -109,7 +127,17 @@ def testing():
 					"name": str(line.username),
 					"email": str(line.email), 
 					"password": str(line.password)})
-	return str(sols)
+	# Check comments working correctly 
+	comms = []
+	q = models.Comment.query.all()
+	db.session.commit()
+	for line in q:
+		comms.append({"id": str(line.id),
+					"name": str(line.username),
+					"text": str(line.text), 
+					"img_id": str(line.img_id),
+					"score": str(line.score)})
+	return str(sols)+"\n \n"+str(comms)
 
 if __name__ == '__main__':
 	# # Deploying
