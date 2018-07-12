@@ -137,7 +137,17 @@ def testing():
 					"text": str(line.text), 
 					"img_id": str(line.img_id),
 					"score": str(line.score)})
-	return str(sols)+"\n \n"+str(comms)
+
+	# Check comments working correctly 
+	imgs = []
+	q = models.Img.query.all()
+	db.session.commit()
+	for line in q:
+		imgs.append({"id": str(line.id),
+					"name": str(line.username),
+					"source_name": str(line.text), 
+					"source_link": "https://"+str(line.img_id)})
+	return str(sols)+"\n \n"+str(comms)+"\n \n"+str(imgs)
 
 if __name__ == '__main__':
 	# # Deploying
