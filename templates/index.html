@@ -11,6 +11,13 @@
         <p></p>
         {% endif %}
 
+        {% for image in imgs %}
+            <div class="container">
+                <a href="/post{{image.id}}/">
+                    <img src="/static/img/{{image.name}}" style="max-height:50%; border:0.5rem solid #000000;">
+                </a>
+            </div>
+        {% enfor %}
         
         {% for img in data %}
         <div class="image" style="max-width:70%;">

@@ -31,9 +31,9 @@ from utils import models
 
 @app.route('/')
 def web():
-	# imgs = models.Img.query.all()
+	imgs = models.Img.query.all()
 	data = []
-	return render_template('index.html', data=data)
+	return render_template('index.html', data=data, imgs=imgs)
 
 @app.route('/demo/')
 def demo():
