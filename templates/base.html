@@ -58,14 +58,28 @@
     <div class="container">
         <div class="row">
     <!-- Left Section -->
-            <div class="column column-34">
-                <p><big>🖼 &nbsp; &nbsp; New memes uploaded periodically</big></p>
-                <p><big>😂 &nbsp; &nbsp; Type the funniest caption</big></p>
-                <p><big>💜 &nbsp; &nbsp; Give love to your favourites</big></p>
-                <p><big>🥇 &nbsp; &nbsp; Get to the top of the Leaderboard</big></p>
+            <div class="column">
+                <table style="border:0; margin-top:15%;">
+                    <tr>
+                        <td>🖼</td>
+                        <td>New memes periodically</td>
+                    </tr>
+                    <tr>
+                        <td>😂</td>
+                        <td>Type the funniest caption</td>
+                    </tr>
+                    <tr>
+                        <td>💜</td>
+                        <td>Give love to your favourites</td>
+                    </tr>
+                    <tr>
+                        <td>🥇</td>
+                        <td>Conquer the Leaderboard!</td>
+                    </tr>
+                </table>
             </div>
     <!-- Right Section -->
-            <div class="column column-66">
+            <div class="column" style="min-width:60%;">
             	{% block content %}
             	{% endblock %}
             </div>
