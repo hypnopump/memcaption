@@ -428,7 +428,7 @@ input[type='radio'] {
       align-self: center;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 45rem) {
   .row {
     flex-direction: row;
     margin-left: -1.0rem;
