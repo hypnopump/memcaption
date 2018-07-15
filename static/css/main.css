@@ -1,0 +1,16 @@
+.container-big {
+  margin: 0 auto;
+  max-width: 150.0rem;
+  padding: 0 2.0rem;
+  position: relative;
+  width: 100%;
+}
+
+.generic {
+	max-width:90rem;
+}
+
+.meme{
+	max-height:50%;
+	border:0.5rem solid #000000;
+}

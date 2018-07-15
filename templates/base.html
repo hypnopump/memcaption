@@ -51,21 +51,21 @@
     <br/>
     <!-- Clear any float. HEADER  -->
     <div class="clearfix header container">
-        <h3 id="homeHeading" style="color:#9b4dca;"><b>MemCaption, type the funniest meme caption.</b></h3>
+        <h2 id="homeHeading" style="color:#9b4dca;"><b>MemCaption, type the funniest meme caption.</b></h2>
     </div>	
 
 	<!-- BODY -->
-    <div class="container">
+    <div class="container-big">
         <div class="row">
     <!-- Left Section -->
-            <div class="column" style="text-align:left;">
-                <p style="margin-top:3%;"><big>🖼 &nbsp; New memes uploaded periodically</big></p>
-                <p style="margin-top:3%;"><big>😂 &nbsp; Type the funniest caption</big></p>
-                <p style="margin-top:3%;"><big>💜 &nbsp; Give love to your favourites</big></p>
-                <p style="margin-top:3%;"><big>🥇 &nbsp; Get to the top of the Leaderboard</big></p>
+            <div class="column" style="text-align:left; max-width:60rem;">
+                <p style="margin-top:30%;"><h4>🖼 &nbsp; New memes uploaded periodically</h4></p>
+                <p><h4>😂 &nbsp; Type the funniest caption</h4></p>
+                <p><h4>💜 &nbsp; Give love to your favourites</h4></p>
+                <p><h4>🥇 &nbsp; Get to the top of the Leaderboard</h4></p>
             </div>
     <!-- Right Section -->
-            <div class="column column-66">
+            <div class="column">
             	{% block content %}
             	{% endblock %}
             </div>
