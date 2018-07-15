@@ -24,4 +24,5 @@ db.session.commit()
 # q = XXXX.query.all()
 # lister = [[line.] for line in q]
 # print(lister)
-# db.session.add(Img("third.png", "Pexels", "pexels.com"))
+# db.session.add(Img("fourth.png", "Pexels", "pexels.com"))
+# db.session.commit()
