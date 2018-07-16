@@ -6,7 +6,7 @@ Hey there! New ideas are welcome: open/close issues, fork the repo and share you
 
 Clone this project to your computer:
 
-`git clone https://github.com/EricAlcaide/pysimplechain`
+`git clone https://github.com/EricAlcaide/memcaption`
 
 By contributing to this project you agree to abide by the [code of conduct](code-of-conduct.md).
 
