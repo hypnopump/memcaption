@@ -31,9 +31,17 @@ from utils import models
 
 @app.route('/')
 def web():
-	imgs = models.Img.query.all()[::-1][:5]
-	data = []
-	return render_template('index.html', data=data, imgs=imgs)
+	imgs = models.Img.query.all()[::-1]
+	# Separate images by sets of 3
+	data, aux = [], []
+	for img in imgs[5:]:
+		aux.append(img)
+		if len(aux) == 3:
+			data.append(aux)
+			aux = []
+	if len(aux)>0: data.append(aux)
+
+	return render_template('index.html', data=data, imgs=imgs[:5])
 
 @app.route('/demo/')
 def demo():
@@ -47,6 +55,11 @@ def post(id):
 	comments = [x for x in sorted(comments, key=lambda x: x.score, reverse=True)]
 
 	return render_template('post.html', image=image, comments=comments)
+
+@app.route('/last/')
+def last():
+	img = models.Img.query.all()[-1]
+	return redirect('/post'+str(img.id)+'/')
 
 @app.route('/add_comment/', methods=['POST'])
 def add_comment():

@@ -46,4 +46,19 @@
         
     </section>
 
+
+    <div class="container archive" style="margin-top:3rem;">
+        {% for set in data %}
+            <div class="row">
+                {% for image in set %}
+                <div class="column column-33">
+                    <a href="/post{{image.id}}/">
+                    <img src="/static/img/{{image.name}}" class="archive_mini">
+                </a>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
